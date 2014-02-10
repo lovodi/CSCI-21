@@ -1,5 +1,13 @@
 /*
- * Programming Challenge 3
+ * 
+ * PC3
+ * Learning how to use if statements and cstdlib
+ *
+ * Lovodi Lee
+ * Date created: 
+ * Last date modified: 2/3/14
+ *
+ * SOURCES USED
  */
 #include <cassert>
 #include <cmath>
