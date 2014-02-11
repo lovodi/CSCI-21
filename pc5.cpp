@@ -70,6 +70,18 @@ int findLarger(int n1, int n2)
  */
 int getStats(string s, int& alphaCount, int& digitCount)
 {
+	//
+	// Grader comments 2014.02.10
+	//
+	// Be sure to run your code before you turn it in. The unit test
+	// output will show you whether your program is working properly.
+	// At this point, the unit tests determine most of your grade,
+	// so if they fail, you lose points.
+	//
+	// This function fails the unit test because you didn't reset
+	// alphaCount and digitCount. I'll ask Boyd to explain why during
+	// class on Wednesday, because many people had trouble with this. --Rob
+	//
     for(int i = 0; i < s.length(); i++)
     {
         if(isalpha(s[i]))
