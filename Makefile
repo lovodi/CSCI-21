@@ -4,16 +4,16 @@
 #
 # Programmer: Lovodi Lee
 #
-
+FLAGS = -Wall -Werror -Wextra -pedantic
 # Target for programming challenge 3
 # Date completed: 2-3-2014
 pc3: pc3.cpp
-	g++ -o pc3 pc3.cpp
-	
+	g++ $(FLAGS) -o pc3 pc3.cpp
 pc4: pc4.cpp
-	g++ -o pc4 pc4.cpp
-	
+	g++ $(FLAGS) -o pc4 pc4.cpp
 pc5: pc5.cpp
-	g++ -o pc5 pc5.cpp
+	g++ $(FLAGS) -o pc5 pc5.cpp
 pc6: pc6.cpp
-	g++ -o pc6 pc6.cpp
+	g++ $(FLAGS) -o pc6 pc6.cpp
+pc7: pc7.cpp
+	g++ $(FLAGS) -o pc7 pc7.cpp

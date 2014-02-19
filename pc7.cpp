@@ -61,11 +61,9 @@ bool processFile(string filename)
     ifstream fileIn(filename.c_str()); 
     if (fileIn.good() == true)
     {
-        cout << "Ready to read input from " << filename << endl;
         int nextLine;
         while (fileIn >> nextLine) // the "easy" way to read each line
         {
-            cout << "read -> " << nextLine << endl;
             if (nextLine == 10)
                 onTen();
             else if (nextLine == 20)
@@ -84,7 +82,6 @@ bool processFile(string filename)
     }
     else
     {
-        cout << "Unable to open " << filename << " for input." << endl;
         return false;
     }
     return false;
