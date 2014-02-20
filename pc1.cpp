@@ -4,9 +4,10 @@
  *
  * Lovodi
  * Date created: 1/29/14
- * Last date modified: 2/2/14
+ * Last date modified: 1/29/14
  *
  * SOURCES USED
+ *
  */
 #include <cassert>
 #include <iostream>
