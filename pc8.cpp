@@ -1,6 +1,6 @@
 /*
  * PC8
- * 
+ * conversion of strings to char*
  *
  * Lovodi
  * Date created: 2/24/14
