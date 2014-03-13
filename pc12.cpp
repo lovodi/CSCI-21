@@ -88,6 +88,23 @@ void clearDynoIntArray (int*& theArray)
     theArray = NULL;
 }
 
+//
+// Grader comments 2014.03.13
+//
+// Use indentation to make the organization of your code
+// more clear. For example, on lines 105, 118, 130, indent
+// the for() from the else, so it's clear to your reader
+// that the for() is conditional on the else. Also,
+// for readability, consider using braces even when they're
+// not strictly required. Like this:
+// else {
+//		for(int i = 0; i < arraySize; i++) {
+//			if(theArray[i] > max) {
+//				max = theArray[i];
+//			}			
+//		}	
+// }
+//
 int sum (int* theArray, unsigned int arraySize)
 {
     unsigned int total = 0;
