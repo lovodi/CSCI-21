@@ -28,6 +28,11 @@ int main (int , char* [] )
 {
     unittest();
 	
+	//
+	// Grader comments 2014.04.11
+	// Missing interactive test: deducted 200 points
+	//
+	
     // CODE HERE -- INTERACTIVE TEST
     //
     // add additional functions as needed to support interactive test

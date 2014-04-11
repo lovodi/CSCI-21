@@ -1,4 +1,4 @@
-FLAGS = -Wall -Wextra -Werror -pedantic
+FLAGS =  -Wno-newline-eof -Wall -Wextra -Werror -pedantic
 
 pp2: Prize.o Box.o pp2.o
 	g++ $(FLAGS) Prize.o Box.o pp2.o -o pp2

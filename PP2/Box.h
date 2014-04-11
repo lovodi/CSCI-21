@@ -5,6 +5,14 @@
 #include <string>
 using namespace std;
 
+//
+// Grader comments 2014.04.11
+//
+// Need more complete function documentation. See project requirements:
+// "write correct file header and function (description, all parameters,
+// and return value) documentation; use this sample as a guide" See also
+// prize.h -- deducted 10 points
+//
 class Box
 {
     public:
