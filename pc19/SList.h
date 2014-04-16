@@ -8,6 +8,12 @@
 
 using namespace std;
 
+//
+// Grader comments 2014.04.16
+// Need better function documentation in all header files.
+// See Boyd's examples. No points deducted because it's a
+// daily. Points will be deducted for projects.
+//
 
 class SList
 {
