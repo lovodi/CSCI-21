@@ -1,190 +1,178 @@
 #pragma once
-#include <string>
-#include <iostream>
-#include <sstream>
-#include "SLNode-template.h"
+#include "SLNode.h"
 #include <cstdlib>
+#include <string>
+#include <sstream>
+#include <iostream>
+
 using namespace std;
 
-template<class T>
-class SList
-{
-    public:
-        SList()
-        {
-            head = NULL;
-            size;
-        }
-        
-        ~SList()
-        {
-            clear();
-        }
-        
-        void insertHead(T value)
-        {
+template <typename T>
+class SList{
+public:
+    SList(){
+        head=NULL;
+        size=0;
+    }
+    
+    ~SList() {
+        clear();
+    }
+    
+    	void insertHead (T value) 
+    	{
             SLNode<T>* nodie = new SLNode<T>(value);
             nodie -> setNextNode(head);
             head = nodie;
             size++;
         }
-        
-        void insertTail(T content)
+    
+    void removeHead () 
+    {
+        if (head != NULL) 
         {
-            if(head == NULL)
-            {
-                insertHead(content); //this will increment the count, no need for size++ etc.
-            }
-            else
-            {
-                SLNode<T>* temp = new SLNode<T>(content);
-                SLNode<T>* i = head;
-                while (i -> getNextNode() != NULL)
-                {
-                    i = i -> getNextNode();
-                }
-                i -> setNextNode(temp);
-                size++;
-            }
+            SLNode<T>* temp = head;
+            head = head -> getNextNode();
+            delete temp;
+            size--;
         }
-        
-        void removeHead()
+    }
+    void insertTail (T value)
+    {
+        if (head == NULL) 
         {
-            if (head != NULL)
-            {
-                SLNode<T>* temp = head;
-                head = head -> getNextNode();
-                delete temp;
-                size--;
-            }
-        }
-        
-        void removeTail()
+            insertHead(value);
+        } 
+        else
         {
-            if(head != NULL)
-            {
-                SLNode<T>* i = head;
-                SLNode<T>* trailer = NULL;
-                while(i->getNextNode() != NULL)
-                {
-                    trailer = i;
-                    i = i -> getNextNode();
-                }
-                delete i;
-                size--;
-                if(trailer == NULL)
-                {
-                    head = NULL;
-                }
-                else
-                {
-                    trailer -> setNextNode(NULL);
-                }
+            SLNode<T>* temp = new SLNode<T>(value);
+            SLNode<T>* i = head;
+            while (i -> getNextNode() != NULL) {
+                i = i -> getNextNode();
             }
+            i -> setNextNode(temp);
+            size++;
         }
-        
-        void insert(T newContents)
+    }
+    
+    void removeTail () 
+    {
+        if (head != NULL) 
         {
-            if (head == NULL)
-                insertHead(newContents);
-            else if (head -> getNextNode() == NULL)
+            SLNode<T>* i = head;
+            SLNode<T>* trailer = NULL;
+            while (i -> getNextNode() != NULL) 
             {
-                if (newContents < head -> getContents())
-                    insertHead(newContents);
-                else
-                    insertTail(newContents);
+                trailer = i;
+                i = i -> getNextNode();
             }
-            else
-            {
-                SLNode<T>* trailer = NULL;
-                SLNode<T>* spot = head;
-                while (spot -> getNextNode() != NULL && newContents > spot -> getContents())
-                {
-                    trailer = spot;
-                    spot = spot -> getNextNode();
-                }
-                if (spot -> getNextNode() == NULL && newContents > spot -> getContents())
-                    insertTail(newContents);
-                else
-                {
-                    SLNode<T>* nodee = new SLNode<T>(newContents);
-                    nodee -> setNextNode(spot);
-                    if (trailer != NULL)
-                        trailer -> setNextNode(nodee);
-                    else
-                        head == nodee;
-                }
-            }
+            delete i;
+            size--;
+        if (trailer == NULL)
+            head = NULL;
+        else
+            trailer -> setNextNode(NULL);
         }
-        bool removeFirst(T target)
-        {
-            if (head == NULL)
-                return false;
-            else
-            {
-                SLNode<T>* trailer = NULL;
-                SLNode<T>* spot = head;
-                while(spot != NULL &&spot -> getContents() != target)
-                {
-                    trailer = spot;
-                    spot = spot -> getNextNode();
-                }
-                if(spot == NULL)
-                    return false;
-                else if(spot == head)
-                {
-                    removeHead();
-                    return true;
-                }
-                else
-                {
-                    trailer -> setNextNode(spot->getNextNode());
-                    delete spot;
-                    size--;
-                    return true;
-                }
-            }
-        }
+    }
+    
+    void clear () 
+    {
+        while (head != NULL)
+            removeHead();
+    }
+    
+    unsigned int getSize() const{
+        return size;
+    }
+    
+    string toString () const 
+    {
+        stringstream ss;
         
-        void clear()
+        for (SLNode<T>* i = head; i != NULL; i = i -> getNextNode()) 
         {
-            while (head != NULL)
-                removeHead();
+            ss << i ->getContents();
+            if ((i -> getNextNode()) != NULL)
+                ss << ',';
         }
-        
-        T getSize() const
-        {
-            return size;
-        }
-        
-        string toString () const {
-            stringstream ss;
-            
-            for (SLNode<T>* i = head; i != NULL; i = i -> getNextNode()) {
-                ss << i ->getContents();
-                if ((i -> getNextNode()) != NULL)
-                    ss << ',';
-            }
             return ss.str();
-        }
-        
-        bool removeAll()
+    }
+    
+    
+    bool removeFirst(T target) 
+    {
+        if (head == NULL)
+            return false;
+        else 
         {
-            while (head != NULL)
+            SLNode<T>* trailer = NULL;
+            SLNode<T>* spot = head;
+            while (spot != NULL && spot -> getContents() != target) 
             {
-                SLNode<T>* temp = head;
-                head = head -> getNextNode();
-                delete temp;
-                size--;
+                trailer = spot;
+                spot = spot -> getNextNode();
             }
-            if (head == NULL)
-                return true;
-            else
-                return false;
+        if (spot == NULL)
+            return false;
+        else if (spot == head) 
+        {
+            removeHead();
+            return true;
         }
-        
-        
-  private:
+        else 
+        {
+            trailer -> setNextNode(spot -> getNextNode());
+            delete spot;
+            size--;
+            return true;
+            }
+        }
+    }
+    
+    bool removeAll (T target) 
+    {
+        bool holder (removeFirst(target));
+            while (removeFirst(target));
+                return holder;
+    }
+    
+    void insert(T newValue) 
+    {
+        if ( head == NULL)
+            insertHead(newValue);
+        else if (head -> getNextNode() == NULL) 
+        {
+            if (newValue < head -> getContents())
+                insertHead(newValue);
+            else
+                insertTail(newValue);
+            }
+            else 
+            {
+                SLNode<T>* trailer = NULL;
+                SLNode<T>* spot = head;
+    
+                while ( spot -> getNextNode() != NULL && newValue > spot -> getContents()) 
+                {
+                    trailer = spot;
+                    spot = spot -> getNextNode();
+                }
+                if (spot -> getNextNode() == NULL && newValue > spot -> getContents())
+                    insertTail(newValue);
+                else 
+                {
+                    SLNode<T>* nodee = new SLNode<T>(newValue);
+                    nodee -> setNextNode(spot);
+                if (trailer != NULL)
+                    trailer -> setNextNode(nodee);
+                else
+                    head = nodee;
+                    size++;
+                }
+            }
+        }
+    
+private:
     SLNode<T>* head;
-    T size;
+    unsigned int size;
 };
