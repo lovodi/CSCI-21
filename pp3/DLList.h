@@ -14,7 +14,7 @@ class DLList
         DLList();
         
         //removes head
-        void clear();
+        void clearList();
         
         //list destructor
         virtual ~DLList();
@@ -29,27 +29,38 @@ class DLList
         void insertTail(int content);
         
         //reads content from head
-        int getHead() const;
+        int getHead();
         
         //reads content from tail
-        int getTail() const;
+        int getTail();
+        
+        //reads first node
+        DLNode* getFirst();
+        
+        //reads last node
+        DLNode* getLast();
         
         //removes nodes where the head is
         void removeHead();
+        
+        bool getContents(int targetContents);
+        
+        bool getSpecificContents(int contentRetrieved, DLNode* assignedNode);
         
         //removes node where the tail is
         void removeTail();
         
         //removes node from head
-        bool removeFirst(int target);
+        bool removeTarget(int target);
         
         //mutates size
-        unsigned int getSize() const;
+        unsigned int getSize();
         
         //returns the entire list as a string
-        string toString () const;
+        string toString ();
     
     private:
         DLNode* head;
         unsigned int size;
+        DLNode* tail;
 };

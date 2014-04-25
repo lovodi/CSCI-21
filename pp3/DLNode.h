@@ -8,20 +8,19 @@ using namespace std;
 class DLNode
 {
 public:
-    DLNode(int newData=0);
+    DLNode(int newContents = 0);
     virtual ~DLNode();
+    int getContents();
+    void setContents(int newContents);
     
-    int getData();
-    void setData(int newData);
+    DLNode*& getprev();
+    void setprev(DLNode* newprev);
     
-    DLNode*& getLast();
-    void setLast(DLNode* newLast);
-    
-    DLNode*& getNext();
-    void setNext(DLNode* newNext);
+    DLNode*& getNextNode();
+    void setNextNode(DLNode* newNext);
     
 private:
-    int data;
-    DLNode* lastNode;
+    int Contents;
+    DLNode* prevNode;
     DLNode* nextNode;
 };
