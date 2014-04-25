@@ -8,8 +8,11 @@
 #include <sstream>
 using namespace std;
 
-int main(int argv , char** argc)
+int main(int  , char** )
 {
+    string temporary("file.txt");
+    Operator runProgram(temporary);
+    runProgram.run();
     
     return 0;
 }

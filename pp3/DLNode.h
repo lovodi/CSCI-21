@@ -16,8 +16,8 @@ public:
     DLNode*& getprev();
     void setprev(DLNode* newprev);
     
-    DLNode*& getNextNode();
-    void setNextNode(DLNode* newNext);
+    DLNode*& getNext();
+    void setNext(DLNode* newNext);
     
 private:
     int Contents;

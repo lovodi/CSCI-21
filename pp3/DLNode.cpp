@@ -30,12 +30,12 @@ void DLNode::setprev(DLNode* newprev)
     prevNode=newprev;
 }
 
-DLNode*& DLNode::getNextNode()
+DLNode*& DLNode::getNext()
 {
     return nextNode;
 }
 
-void DLNode::setNextNode(DLNode* newNext)
+void DLNode::setNext(DLNode* newNext)
 {
     nextNode=newNext;
 }

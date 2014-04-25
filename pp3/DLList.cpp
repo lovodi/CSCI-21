@@ -28,7 +28,7 @@ void DLList::insert(int newContents)
 {
     if (head == NULL)
         insertHead(newContents);
-    else if (head -> getNextNode() == NULL)
+    else if (head -> getNext() == NULL)
     {
         if (newContents < head -> getContents())
             insertHead(newContents);
@@ -39,19 +39,19 @@ void DLList::insert(int newContents)
     {
         DLNode* trailer = NULL;
         DLNode* spot = head;
-        while (spot -> getNextNode() != NULL && newContents > spot -> getContents())
+        while (spot -> getNext() != NULL && newContents > spot -> getContents())
         {
             trailer = spot;
-            spot = spot -> getNextNode();
+            spot = spot -> getNext();
         }
-        if (spot -> getNextNode() == NULL && newContents > spot -> getContents())
+        if (spot -> getNext() == NULL && newContents > spot -> getContents())
             insertTail(newContents);
         else
         {
             DLNode* nodee = new DLNode(newContents);
-            nodee -> setNextNode(spot);
+            nodee -> setNext(spot);
             if (trailer != NULL)
-                trailer -> setNextNode(nodee);
+                trailer -> setNext(nodee);
             else
                 head = nodee;
             size++;
@@ -63,7 +63,7 @@ void DLList::insert(int newContents)
 void DLList::insertHead(int value)
 {
     DLNode* nodie = new DLNode(value);
-    nodie -> setNextNode(head);
+    nodie -> setNext(head);
     head = nodie;
     size++;
 }
@@ -79,11 +79,11 @@ void DLList::insertTail(int content)
     {
         DLNode* temp(new DLNode(content));
         DLNode* i = head;
-        while (i -> getNextNode() != NULL)
+        while (i -> getNext() != NULL)
         {
-            i = i -> getNextNode();
+            i = i -> getNext();
         }
-        i -> setNextNode(temp);
+        i -> setNext(temp);
         size++;
     }
 }
@@ -92,7 +92,9 @@ void DLList::insertTail(int content)
 int DLList::getHead()
 {
     if(head != NULL)
+    {
         return head->getContents();
+    }
     else
         return 0;
 }
@@ -101,7 +103,9 @@ int DLList::getHead()
 int DLList::getTail()
 {
     if(tail != NULL)
+    {
         return tail->getContents();
+    }
     else
         return 0;
 }
@@ -124,7 +128,7 @@ void DLList::removeHead()
     if (head != NULL)
     {
         DLNode* temp = head;
-        head = head -> getNextNode();
+        head = head -> getNext();
         delete temp;
         size--;
     }
@@ -137,10 +141,10 @@ void DLList::removeTail()
     {
         DLNode* i = head;
         DLNode* trailer = NULL;
-        while(i->getNextNode() != NULL)
+        while(i->getNext() != NULL)
         {
             trailer = i;
-            i = i -> getNextNode();
+            i = i -> getNext();
         }
         delete i;
         size--;
@@ -150,7 +154,7 @@ void DLList::removeTail()
         }
         else
         {
-            trailer -> setNextNode(NULL);
+            trailer -> setNext(NULL);
         }
     }
 }
@@ -167,7 +171,7 @@ bool DLList::removeTarget(int target)
         while(spot != NULL &&spot -> getContents() != target)
         {
             trailer = spot;
-            spot = spot -> getNextNode();
+            spot = spot -> getNext();
         }
         if(spot == NULL)
             return false;
@@ -178,7 +182,7 @@ bool DLList::removeTarget(int target)
         }
         else
         {
-            trailer -> setNextNode(spot->getNextNode());
+            trailer -> setNext(spot->getNext());
             delete spot;
             size--;
             return true;
@@ -198,7 +202,7 @@ bool DLList::getSpecificContents(int contentRetrieved, DLNode* assignedNode)
     else if(assignedNode -> getContents() == contentRetrieved)
         return true;
     else
-        return getSpecificContents(contentRetrieved, assignedNode -> getNextNode());
+        return getSpecificContents(contentRetrieved, assignedNode -> getNext());
 }
 
 
@@ -215,9 +219,9 @@ string DLList::toString ()
 {
     stringstream ss;
     
-    for (DLNode* i = head; i != NULL; i = i -> getNextNode()) {
+    for (DLNode* i = head; i != NULL; i = i -> getNext()) {
         ss << i ->getContents();
-        if ((i -> getNextNode()) != NULL)
+        if ((i -> getNext()) != NULL)
             ss << ',';
     }
     return ss.str();
