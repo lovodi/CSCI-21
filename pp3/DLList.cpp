@@ -1,4 +1,7 @@
 #include "DLList.h"
+#include "DLNode.h"
+#include <iostream>
+using namespace std;
 
 //creates an empty double link list, NULL head and the size of 0
 DLList::DLList()

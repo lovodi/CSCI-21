@@ -20,17 +20,9 @@
 #include <sstream>
 using namespace std;
 
-int main(int argv, char**  argc)
+int main(int , char**  )
 {
-    if(argv==2)
-    {
-        string program(argc[1]);
-        Operator runProgram(program);
-        runProgram.run();
-    }
-    else
-    {
-        cout << "Incorrect code, please input the correct code." << endl;
-    }
-    return 0;
+    string program("file.txt");
+    Operator runProgram(program);
+    runProgram.run();
 }
