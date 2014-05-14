@@ -1,8 +1,12 @@
+//
+// Grader comments 2014.05.13
+// -66 points total
+//
 #include "DLList.h"
 
 //creates an empty double link list, NULL head and the size of 0
 DLList::DLList()
-: head(NULL), count(0)
+: size(count), head(NULL), count(0)
 {
 }
 
@@ -58,6 +62,11 @@ void DLList::insert(int newContents)
 }
 
 //inserts new nodes where the head is
+//
+// Grader comments 2014.05.13
+// Doesn't manage tail when necessary.
+// -12 points
+//
 void DLList::pushFront(int value)
 {
     DLNode* nodie = new DLNode(value);
@@ -66,9 +75,19 @@ void DLList::pushFront(int value)
         head -> setPrevious(nodie);
     head = nodie;
     count++;
+	
+	// Rob
+	if(count == 1) {
+		tail = head;
+	}
 }
 
 //inserts new node where the tail is
+//
+// Grader comments 2014.05.13
+// Doesn't manage head and tail when necessary.
+// -15 points
+//
 void DLList::pushBack(int Contents)
 {
     if(head == NULL)
@@ -85,11 +104,17 @@ void DLList::pushBack(int Contents)
         }
         i -> setNext(temp);
         count++;
+		
+		// Rob
+		tail = temp;
+		if(count == 1) {
+			head = tail;
+		}
     }
 }
 
 //reads content from head
-int DLList::getFront()
+int DLList::getFront() const
 {
     if(head != NULL)
     {
@@ -103,7 +128,7 @@ int DLList::getFront()
 }
 
 //reads content from tail
-int DLList::getBack()
+int DLList::getBack() const
 {
     if(tail != NULL)
     {
@@ -118,6 +143,11 @@ int DLList::getBack()
 
 
 //removes nodes where the head is
+//
+// Grader comments 2014.05.13
+// Doesn't manage tail when necessary.
+// -12 points
+//
 void DLList::popFront()
 {
     if (head != NULL)
@@ -126,12 +156,22 @@ void DLList::popFront()
         head = head -> getNext();
         delete temp;
         count--;
+		
+		// Rob
+		if(count == 0) {
+			tail = 0;
+		}
     }
 }
 
 
 
 //removes node where the tail is
+//
+// Grader comments 2014.05.13
+// Doesn't manage tail when necessary.
+// -12 points
+//
 void DLList::popBack()
 {
     if(head != NULL)
@@ -148,16 +188,18 @@ void DLList::popBack()
         if(trailer == NULL)
         {
             head = NULL;
+			tail = NULL;	// Rob
         }
         else
         {
+			tail = trailer;	// Rob
             trailer -> setNext(NULL);
         }
     }
 }
 
 //removes node from head
-bool DLList::removeAll(int target)
+bool DLList::removeFirst(int target)
 {
     if (head == NULL)
         return false;
@@ -179,7 +221,22 @@ bool DLList::removeAll(int target)
         }
         else
         {
+//
+// Grader comments 2014.05.13
+// Doesn't manage tail when necessary.
+// Doesn't insert new node properly.
+// -15 points.
+//
             trailer -> setNext(spot->getNext());
+			
+			// Rob
+			DLNode* newNext = spot->getNext();
+			if(newNext == 0) {
+				tail = trailer;
+			} else {
+				newNext->setPrevious(trailer);
+			}
+
             delete spot;
             count--;
             return true;
@@ -187,12 +244,12 @@ bool DLList::removeAll(int target)
     }
 }
 
-bool DLList::getContents(int targetContents)
+bool DLList::getContents(int targetContents) const
 {
     return(getSpecificContents(targetContents, head));
 }
 
-bool DLList::getSpecificContents(int contentRetrieved, DLNode* assignedNode)
+bool DLList::getSpecificContents(int contentRetrieved, DLNode* assignedNode) const
 {
     if(assignedNode == NULL)
         return false;
@@ -206,7 +263,7 @@ bool DLList::getSpecificContents(int contentRetrieved, DLNode* assignedNode)
 
 
 //mutates size
-unsigned int DLList::getSize()
+unsigned int DLList::getSize() const
 {
     return count;
 }
