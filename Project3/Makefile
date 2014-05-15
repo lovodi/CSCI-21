@@ -1,4 +1,9 @@
-flags= -Wall -Wextra -Werror -pedantic
+##
+## Grader comments 2014.05.15
+## No clean or cleanall targets
+## -10 points
+##
+flags= -Wall -Wextra -Werror -pedantic -Wno-newline-eof
 
 pp3: pp3.o DLNode.o DLList.o Operator.o
 	g++ $(flags) pp3.o DLNode.o DLList.o Operator.o -o pp3
