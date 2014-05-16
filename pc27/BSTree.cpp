@@ -52,7 +52,6 @@ root = root->getLeftChild();
 delete oldNode;
 oldNode = NULL;
 } else
-removeMax(removed, root->getRightChild());
 }
     
 bool BSTree::remove (int value) 
