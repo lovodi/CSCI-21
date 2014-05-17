@@ -9,14 +9,16 @@ class BSTNode
     public:
         //constructor
         BSTNode(T newData)
-            :data(newData), leftChild(NULL), rightChild(NULL){/*nothing to do*/}
+            :data(newData), leftChild(NULL), rightChild(NULL){}
         //destructor
-        virtual ~BSTNode(){
+        virtual ~BSTNode()
+        {
             leftChild=rightChild=NULL;
         }
         
         //set and get for the Data of the tree
-        void Data(T newData){
+        void Data(T newData)
+        {
             data=newData;
         }
         T& Data(){
@@ -25,7 +27,8 @@ class BSTNode
         
         
         //set and get for left child;
-        void LeftChild(BSTNode* newLeft){
+        void LeftChild(BSTNode* newLeft)
+        {
             leftChild=newLeft;
         }
         BSTNode* LeftChild() const{
@@ -33,17 +36,21 @@ class BSTNode
         }
         
         //set and get for right child
-        void RightChild(BSTNode* newRight){
+        void RightChild(BSTNode* newRight)
+        {
             rightChild=newRight;
         }\
-        BSTNode* RightChild() const{
+        BSTNode* RightChild() const
+        {
             return rightChild;
         }
         
-        BSTNode*& RightChild(){
+        BSTNode*& RightChild()
+        {
             return rightChild;
         }
-        BSTNode*& LeftChild(){
+        BSTNode*& LeftChild()
+        {
             return leftChild;
         }
         
@@ -53,21 +60,25 @@ class BSTNode
             return Data();
         }
         //returns left child
-        BSTNode*& getLeftChild(){
+        BSTNode*& getLeftChild()
+        {
             return LeftChild();
         }
         //returns right child
-        BSTNode*& getRightChild(){
+        BSTNode*& getRightChild()
+        {
             return RightChild();
         }
         
         void setData(T newData){
             Data(newData);
         }
-        void setRightChild(BSTNode* which){
+        void setRightChild(BSTNode* which)
+        {
             RightChild(which);
         }
-        void setLeftChild(BSTNode* which){
+        void setLeftChild(BSTNode* which)
+        {
             LeftChild(which);
         }
         
