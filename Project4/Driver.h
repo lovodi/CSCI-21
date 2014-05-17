@@ -22,10 +22,10 @@ struct Input
 class Driver
 {
 public:
-    Driver(string newfile);
+    Driver(ifstream newfile);
     virtual ~Driver();
 
-    void createList();
+    void createTree();
 
     unsigned int getSize();
 
@@ -33,5 +33,5 @@ public:
 
 private:
     ifstream file;
-    BSTree* tree;
+    BSTree<int>* tree;
 };

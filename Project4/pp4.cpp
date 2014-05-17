@@ -21,17 +21,13 @@
 #include <sstream>
 
 using namespace std;
-    string program();
-    Driver runProgram(program);
-    runProgram.run();
 
 int main(int argv, char** argc)
 {
     if(argv==2)
     {
-        string program(argc[1]);
-        Driver runProgram(program);
-        runProgram.run();
+        Driver program(argc[1]);
+        program.run();
     }
     else
     {
