@@ -11,13 +11,13 @@
 #include "Driver.h"
 using namespace std;
 
-int main(int argv, char** )
+int main(int argv, char** argc)
 {
     if(argv!=2)
-        cout << "MUST INPUT FILE" << endl;
+        cout << "INPUT FILE OR COMMANDS" << endl;
     else
     { 
-        Driver program("testFile.txt");
+        Driver program(argc[1]);
         program.run();
     }
     
