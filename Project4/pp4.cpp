@@ -24,14 +24,14 @@ using namespace std;
 
 int main(int argv, char** argc)
 {
-    if(argv==2)
+    if(argv!=2)
     {
-        Driver program(argc[1]);
-        program.run();
+        cout << "File not found, please have a file to input commands." << endl;
     }
     else
     {
-        cout << "File not found, please have a file to input commands." << endl;
+        Driver program(argc[1]);
+        program.run();
     }
     return 0;
 }

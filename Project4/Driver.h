@@ -33,5 +33,5 @@ public:
 
 private:
     ifstream file;
-    BSTree* tree;
+    BSTree<int>* tree;
 };
