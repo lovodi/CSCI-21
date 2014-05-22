@@ -1,3 +1,7 @@
+//
+// Grader comments 2014.05.21
+// -30 points total
+//
 #pragma once
 
 #include "BSTNode.h"
@@ -165,8 +169,18 @@ private:
         else if(current->Data() < target)
             return get(target, current->RightChild());
         else{
-            T* temp(new T(current->Data()));
-            return temp;
+			//
+			// Grader comments 2014.05.21
+			// Should return the actual Word object from the tree,
+			// not a new Word object. Your caller wants to operate
+			// on the actual Word in the tree, for example by calling
+			// Word::incrementCount(). Also this creates a memory
+			// leak.
+			// -30 points
+			//
+            //T* temp(new T(current->Data()));	// Rob
+            //return temp;						// Rob
+			return &(current->Data());			// Rob
         }
     }
     void inOrder(BSTNode<T>* disp)

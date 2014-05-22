@@ -1,3 +1,7 @@
+//
+// Grader comments 2014.05.21
+// -10 points total
+//
 #include "Driver.h"
 
 
@@ -163,8 +167,17 @@ void Driver::run()
                     cout << "MUST CREATE TREE INSTANCE" << endl;
                 else
                 {
-                    tree->inOrder();
-                    cout << endl;
+					//
+					// Grader comments 2014.05.21
+					// Should report TREE EMPTY if necessary. Modified
+					// the code below to get the unit test to run properly.
+					// -5 points
+					if(tree->Size() == 0) {
+	                    cout << "TREE EMPTY" << endl;
+					} else {
+	                    tree->inOrder();
+	                    cout << endl;
+					}
                 }
             break;
             case 'E':
@@ -173,8 +186,18 @@ void Driver::run()
                     cout << "MUST CREATE TREE INSTANCE" << endl;
                 else
                 {
-                    tree->reverseOrder();
-                    cout << endl;
+					//
+					// Grader comments 2014.05.21
+					// Should report TREE EMPTY if necessary. Modified
+					// the code below to get the unit test to run properly.
+					// -5 points
+					//
+					if(tree->Size() == 0) {
+	                    cout << "TREE EMPTY" << endl;
+					} else {
+	                    tree->reverseOrder();
+	                    cout << endl;
+					}
                 }
             break;
             }
