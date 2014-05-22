@@ -1,3 +1,13 @@
+//
+// Grader comments 2014.05.15
+// + 50: naming conventions good
+// + 50: header documentation missing
+// + 50: formatting good
+// - 10: makefile -- see comments in Makefile
+// +  0: driver -- doesn't compile
+// +150: DLNode good
+// +234: DLList -- see comments DLList.cpp
+// 
 /*
 * PROGRAM PROJECT 3
 *

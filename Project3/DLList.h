@@ -7,6 +7,8 @@
 
 using namespace std;
 
+#define clear clearList
+#define get getContents
 class DLList
 {
     public:
@@ -29,34 +31,40 @@ class DLList
         void pushBack(int Contents);
 
         //reads content from head
-        int getFront();
+        int getFront() const;
 
         //reads content from tail
-        int getBack();
+        int getBack() const;
 
 
         //removes nodes where the head is
         void popFront();
 
-        bool getContents(int targetContents);
+        bool getContents(int targetContents) const;
 
-        bool getSpecificContents(int contentRetrieved, DLNode* assignedNode);
+        bool getSpecificContents(int contentRetrieved, DLNode* assignedNode) const;
 
         //removes node where the tail is
         void popBack();
 
         //removes node from head
-        bool removeAll(int target);
+		//
+		// Grader comments 2014.05.13
+		// Looks like you got removeFirst() and removeAll() switched. I switched
+		// them around to give you the most points possible.
+		//
+        bool removeFirst(int target);
+		bool removeAll(int) { /* Rob added to get the unit test to work */ return false; }
 
         //mutates size
-        unsigned int getSize();
+        unsigned int getSize() const;
 
         string toString() const;
 
         //returns the entire list as a string
         friend ostream& operator << (ostream& out, const DLList& src);
 
-    private:
+	private:
         DLNode* head;
         unsigned int count;
         DLNode* tail;
